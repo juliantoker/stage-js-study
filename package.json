@@ -1,0 +1,28 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "2D website that is a living version of my mind in cyberspace... Deal with it B)",
+  "main": "index.js",
+  "dependencies": {
+    "planck-js": "^0.3.12",
+    "stage-js": "^0.8.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/juliantoker/mindofjulianincyberspace.git"
+  },
+  "keywords": [
+    "julian",
+    "toker"
+  ],
+  "author": "Julian Toker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juliantoker/mindofjulianincyberspace/issues"
+  },
+  "homepage": "https://github.com/juliantoker/mindofjulianincyberspace#readme"
+}
