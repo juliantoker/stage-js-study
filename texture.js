@@ -33,3 +33,47 @@ Stage({
     }
   });
   
+  var fontConfig = {
+    atlasName: 'font',
+    fontFile: './font.png',
+    charArray:  ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^__\`abcdefghijklmnopqrstuvwxyz{|}~',
+    fontWidth: 23,
+    fontHeight: 26,
+    dimX: 12,
+    dimY: 9,
+    fontRatio: 2.0,
+    fontTrim: 0.0
+  };
+
+  var generateFontAtlas = function(fontConfig) {
+    let cArray = fontConfig.charArray;
+    let len = cArray.length;
+    var output = {};
+    var counter = 0;
+    while(counter < len) {
+      let char = cArray[counter];
+      let atlasEntry = {
+        x: (counter % fontConfig.dimX) * fontConfig.fontWidth,
+        y: (counter % fontConfig.dimY) * fontConfig.fontHeight,
+        width: fontConfig.fontWidth,
+        height: fontConfig.fontHeight
+      };
+      console.log(`Creating atlasEntry: \n ${char}`);
+      output[char] = atlasEntry;
+      counter++;
+    }
+    console.log(`Font atlas output is: \n ${output.toString()}`);
+    var finalOutput = {
+      name : fontConfig.atlasName,
+      image : { src : fontConfig.fontFile, ratio : fontConfig.ratio },
+      trim : fontConfig.fontTrim,
+      textures : {
+        text: output
+      }
+    }
+    
+    return finalOutput;
+  };
+
+  Stage(generateFontAtlas(fontConfig)
+  );
