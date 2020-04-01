@@ -7,7 +7,9 @@
     "planck-js": "^0.3.12",
     "stage-js": "^0.8.11"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "http-server": "^0.12.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
