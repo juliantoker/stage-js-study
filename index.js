@@ -67,13 +67,12 @@ var createGrid = function(stage, gridSize = graphicsConfig.gridSize) {
     var row = Stage.row().appendTo(column).spacing(1);
     for (i = 0; i < gridSize; i++) {
       let tile = tiles[Math.floor(Math.random() * tiles.length)];
-      tile = 'green';
+      // tile = 'green';
       var cell = Stage.image(tile).appendTo(row).pin('pivot', 0.5);
-      cell.on(Mouse.CLICK, function(point) {
-        console.log("clicking tile");
-        if (this != last) {
-          renderPlant(cell);
-        }
+      // cell['cellName'] = `${i}${j}`
+      cell.on('click', function(point) {
+        // console.log(`Clicking tile  ${cell['cellName']}`);
+        renderPlant(this);
         return true;
       });
     }
@@ -88,7 +87,7 @@ var createGrid = function(stage, gridSize = graphicsConfig.gridSize) {
 // ---------------------------------------------------------------------------------------------------------------
 
 var renderPlant = function(inTile) {
-    var plantNode = Stage.image('red').appendTo(inTile).pin('pivot',0.5);
+    var plantNode = Stage.image('red').appendTo(inTile);
     plantNode.scale(0.5);
     // var myPlant = new Plant(plantNode);
     
