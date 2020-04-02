@@ -87,7 +87,7 @@ var createGrid = function(stage, gridSize = graphicsConfig.gridSize) {
 // ---------------------------------------------------------------------------------------------------------------
 
 var renderPlant = function(inTile) {
-    var plantNode = Stage.image('red').appendTo(inTile);
+    var plantNode = Stage.image('red').appendTo(inTile).pin('pivot',0.5);
     plantNode.scale(0.5);
     // var myPlant = new Plant(plantNode);
     
