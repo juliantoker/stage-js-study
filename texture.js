@@ -32,6 +32,13 @@ Stage({
       circle :   { x : 16,   y : 32, width : 16, height : 16}
     }
   });
+
+  /**
+   * Prototype of using font atlas.. 
+   * So far failure... Need to rethink the approach...
+   * Use SVG formatted fonts instead of bitmap
+   * This approach is demonstrated in the stage-js examples fold -> game-orbit
+   */
   
   var fontConfig = {
     atlasName: 'font',

@@ -1,4 +1,3 @@
-
 // Stage element and display that carries the page's content
 var activeStage;
 var activeDisplay;
@@ -11,7 +10,7 @@ var Math = Stage.Math, Mouse = Stage.Mouse;
 var graphicsConfig = {
   viewboxWidth: 300,
   viewboxHeight: 300,
-  gridSize: 90,
+  gridSize: 5,
   defaultGrid: {
     scaleX: 1.4000000000000004,
     scaleY: 0.7000000000000001,
@@ -58,6 +57,7 @@ var transformGrid = function(transformValues, target = grid) {
   target.scale(transformValues.scaleX,transformValues.scaleY);
 }
 var createGrid = function(stage, gridSize = graphicsConfig.gridSize) {
+  const tiles = ['dark','blue','purple','red','orange','yellow','green'];
   var last = null;
 
   var j = 0, i = 0;
@@ -66,14 +66,13 @@ var createGrid = function(stage, gridSize = graphicsConfig.gridSize) {
   for (j = 0; j < gridSize; j++) {
     var row = Stage.row().appendTo(column).spacing(1);
     for (i = 0; i < gridSize; i++) {
-      var cell = Stage.image('green').appendTo(row).pin('pivot', 0.5);
-      cell.on(Mouse.MOVE, function(point) {
+      let tile = tiles[Math.floor(Math.random() * tiles.length)];
+      tile = 'green';
+      var cell = Stage.image(tile).appendTo(row).pin('pivot', 0.5);
+      cell.on(Mouse.CLICK, function(point) {
+        console.log("clicking tile");
         if (this != last) {
-          last = this;
-          cell.tween(Math.random(2000, 5000)).pin({
-            'skewX' : Math.random(0, 0.4),
-            'skewY' : Math.random(0, 0.4)
-          });
+          renderPlant(cell);
         }
         return true;
       });
@@ -81,6 +80,80 @@ var createGrid = function(stage, gridSize = graphicsConfig.gridSize) {
   }
 }
 
+
+// ---------------------------------------------------------------------------------------------------------------
+//
+// Plant Rendering Code
+//
+// ---------------------------------------------------------------------------------------------------------------
+
+var renderPlant = function(inTile) {
+    var plantNode = Stage.image('red').appendTo(inTile).pin('pivot',0.5);
+    plantNode.scale(0.5);
+    // var myPlant = new Plant(plantNode);
+    
+}
+
+var Plant = new function(plantNode) {
+  this.plantConfig = {
+        name: 'default_name',
+        species: 'blackLotus',
+        maxHealth: 10,
+        startingHealth: 10,
+        growthStages: [{
+              stageOrder: 0,
+              name: 'seedling',
+              growthTime: 5000,
+              growthRequirement: {
+                    water: 3
+              },
+              payout: {
+                    points: 10
+              }
+        },{
+              stageOrder: 1,
+              name: 'sprout',
+              growthTime: 8000,
+              growthRequirement: {
+                    water: 5
+              },
+              payout: {
+                    points: 20
+              }
+        },{
+              stageOrder: 2,
+              name: 'flower',
+              growthTime: 12000,
+              growthRequirement: {
+                    water: 9
+              }, 
+              payout: {
+                    points: 30,
+                    seed: 2
+              }
+        }]
+  }
+  this.growthStage = this.plantConfig.growthStages[0];
+  this.growthRequirement = this.growthStage.growthRequirement;
+
+  this.absorbLiquid = function(liquidPayload) {
+        for (let [liquidComponent, liquidAmount] of Object.entries(object1)) {
+              console.log(`${liquidComponent}: ${liquidAmount}`);
+              if(this.growthRequirement[liquidComponent] != undefined) {
+                    this.growthRequirement[key] -= liquidAmount;
+                    console.log(`Plant ${this.plantConfig.species} absorbed ${liquidAmount} ${liquidComponent} \n requirement for ${liquidComponent} is now ${this.growthRequirement[key]}`);
+              }
+            }
+  }
+
+  this.checkRequirements = function() {
+
+  }
+
+  this.grow = function() {
+
+  }
+}
 
 // ---------------------------------------------------------------------------------------------------------------
 //
@@ -132,7 +205,7 @@ var initializePropertiesDebugger = function(stage, debugTargetNode = null) {
   console.log(`Initializing Properties Debugger... \n Stage: ${stage} \n Target Node: ${target}`);
 
   var debugColumn = Stage.column().appendTo(stage).pin('align', 0.0150).spacing(1);
-  createDebugWidgetsFrom(config = debugWidgetConfig, inColumn = debugColumn, forStage = stage);
+  createDebugWidgetsFrom(debugWidgetConfig, debugColumn, stage);
 }
 
 var createDebugWidgetsFrom = function(config = debugWidgetConfig, inColumn = null, forStage = activeStage) {

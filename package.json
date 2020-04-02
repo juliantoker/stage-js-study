@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "planck-js": "^0.3.12",
+    "require": "^2.4.20",
     "stage-js": "^0.8.11"
   },
   "devDependencies": {
