@@ -1,7 +1,12 @@
+var Plant;
+import('./modules/plant/plant.js').then((module) => {
+  Plant = module.Plant;
+});
 // Stage element and display that carries the page's content
 var activeStage;
 var activeDisplay;
 var grid;
+
 
 // Global helper variables
 var Math = Stage.Math, Mouse = Stage.Mouse;
@@ -67,7 +72,7 @@ var createGrid = function(stage, gridSize = graphicsConfig.gridSize) {
     var row = Stage.row().appendTo(column).spacing(1);
     for (i = 0; i < gridSize; i++) {
       let tile = tiles[Math.floor(Math.random() * tiles.length)];
-      // tile = 'green';
+      tile = 'green';
       var cell = Stage.image(tile).appendTo(row).pin('pivot', 0.5);
       // cell['cellName'] = `${i}${j}`
       cell.on('click', function(point) {
@@ -90,68 +95,6 @@ var renderPlant = function(inTile) {
     var plantNode = Stage.image('red').appendTo(inTile).pin('pivot',0.5);
     plantNode.scale(0.5);
     // var myPlant = new Plant(plantNode);
-    
-}
-
-var Plant = new function(plantNode) {
-  this.plantConfig = {
-        name: 'default_name',
-        species: 'blackLotus',
-        maxHealth: 10,
-        startingHealth: 10,
-        growthStages: [{
-              stageOrder: 0,
-              name: 'seedling',
-              growthTime: 5000,
-              growthRequirement: {
-                    water: 3
-              },
-              payout: {
-                    points: 10
-              }
-        },{
-              stageOrder: 1,
-              name: 'sprout',
-              growthTime: 8000,
-              growthRequirement: {
-                    water: 5
-              },
-              payout: {
-                    points: 20
-              }
-        },{
-              stageOrder: 2,
-              name: 'flower',
-              growthTime: 12000,
-              growthRequirement: {
-                    water: 9
-              }, 
-              payout: {
-                    points: 30,
-                    seed: 2
-              }
-        }]
-  }
-  this.growthStage = this.plantConfig.growthStages[0];
-  this.growthRequirement = this.growthStage.growthRequirement;
-
-  this.absorbLiquid = function(liquidPayload) {
-        for (let [liquidComponent, liquidAmount] of Object.entries(object1)) {
-              console.log(`${liquidComponent}: ${liquidAmount}`);
-              if(this.growthRequirement[liquidComponent] != undefined) {
-                    this.growthRequirement[key] -= liquidAmount;
-                    console.log(`Plant ${this.plantConfig.species} absorbed ${liquidAmount} ${liquidComponent} \n requirement for ${liquidComponent} is now ${this.growthRequirement[key]}`);
-              }
-            }
-  }
-
-  this.checkRequirements = function() {
-
-  }
-
-  this.grow = function() {
-
-  }
 }
 
 // ---------------------------------------------------------------------------------------------------------------

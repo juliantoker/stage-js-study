@@ -65,11 +65,11 @@ Stage({
         width: fontConfig.fontWidth,
         height: fontConfig.fontHeight
       };
-      console.log(`Creating atlasEntry: \n ${char}`);
+      // console.log(`Creating atlasEntry: \n ${char}`);
       output[char] = atlasEntry;
       counter++;
     }
-    console.log(`Font atlas output is: \n ${output.toString()}`);
+    // console.log(`Font atlas output is: \n ${output.toString()}`);
     var finalOutput = {
       name : fontConfig.atlasName,
       image : { src : fontConfig.fontFile, ratio : fontConfig.ratio },
