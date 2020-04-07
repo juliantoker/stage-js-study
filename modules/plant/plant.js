@@ -1,4 +1,5 @@
 import basePlant from './plant-base-model.js';
+
 var Plant = new function(plantNode) {
       this.plantNode = plantNode;
       this.plantConfig = Object.create(basePlant);
