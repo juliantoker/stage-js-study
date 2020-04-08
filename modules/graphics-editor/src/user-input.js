@@ -7,12 +7,12 @@ var EVENTS = {
     RIGHT_ARROW: 39,
     UP_ARROW: 38,
     DOWN_ARROW: 40,
-    key0: 48,
-    key1: 49,
-    key2: 50,
-    key3: 51,
-    key4: 52,
-    key5: 53
+    KEY_0: 48,
+    KEY_1: 49,
+    KEY_2: 50,
+    KEY_3: 51,
+    KEY_4: 52,
+    KEY_5: 53
 }
 
 var __EVENTS = [
@@ -28,15 +28,18 @@ var __EVENTS = [
     'key5'
 ];
 
-var createListenerNode = function(config = null, callback = null) {
+var createListenerNode = function(config = {}, callback = null) {
     var listenerNode = Stage.create();
-    initializeKeyboardInput(listenerNode);
-    callback(listenerNode,EVENTS);
+    initializeKeyboardInput(listenerNode,EVENTS);
+    if(callback != null) {
+        callback(listenerNode,EVENTS);
+    }
+    
 
     return listenerNode;
 }
 
-var initializeKeyboardInput = function(listenerNode) {
+var initializeKeyboardInput = function(listenerNode, events) {
       document.onkeydown = checkKey;
     
       function checkKey(e) {
@@ -44,8 +47,10 @@ var initializeKeyboardInput = function(listenerNode) {
         e = e || window.event;
         console.log(`Keycode is ${e.keyCode}`);
         
-        if(e.keyCode == EVENTS.TAB) {
-            listenerNode.publish('TAB');
+        for(var eventName in events) {
+            if(e.keyCode == events[eventName]) {
+                listenerNode.publish(eventName);
+            }
         }
       }
 }

@@ -4,6 +4,7 @@ import('./modules/plant/plant.js').then((module) => {
 });
 
 import GraphicsEditor from './modules/graphics-editor/graphics-editor.js';
+
 // Stage element and display that carries the page's content
 var activeStage;
 var activeDisplay;
@@ -97,12 +98,19 @@ var renderPlant = function(inTile) {
     // var myPlant = new Plant(plantNode);
 }
 
+var setDebugExports = () => {
+    console.log('setting debug exports...\n graphicsEditor \n grid \n stage');
+    window.graphicsEditor = GraphicsEditor;
+    window.grid = grid;
+    window.stage = activeStage;
+}
 //
 // Run Game
 //
 
 Stage(function(stage, display) {
-  initializeGame(stage,display);    
+  initializeGame(stage,display);
+  setDebugExports();    
 });
 
-
+window.setDebugExports = setDebugExports;

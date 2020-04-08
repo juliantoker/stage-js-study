@@ -3,12 +3,12 @@ var EditorWidgetTemplates = {
     XY: 'xy'
 }
 
-var WIDGETS = [{
+var WIDGETS = {
     skew: {
         name: 'skew',
         templateType: EditorWidgetTemplates.XY,
         customIncrement: null,
-        xyFieldNames: {
+        fieldNames: {
           x: 'skewX',
           y: 'skewY'
         }
@@ -16,13 +16,16 @@ var WIDGETS = [{
     rotation: {
         name: 'rotation',
         templateType: EditorWidgetTemplates.SINGLE,
-        customIncrement: null
+        customIncrement: null,
+        fieldNames: {
+            x: 'rotation'
+        }
     },
     offset: {
         name: 'offset',
         templateType: EditorWidgetTemplates.XY,
         customIncrement: null,
-        xyFieldNames: {
+        fieldNames: {
           x: 'offsetX',
           y: 'offsetY'
         }
@@ -31,17 +34,18 @@ var WIDGETS = [{
         name: 'align',
         templateType: EditorWidgetTemplates.XY,
         customIncrement: null,
-        xyFieldNames: {
+        fieldNames: {
           x: 'alignX',
           y: 'alignY'
         }
     },
     
-}];
+};
 
 var EDITOR_CONFIG = {
       defaultIncrement : 0.1,
-      widgetPayload: WIDGETS
+      widgetPayload: WIDGETS,
+      widgetTemplates: EditorWidgetTemplates
     }
 
 export default EDITOR_CONFIG;
