@@ -18,26 +18,21 @@ var GraphicsEditor = function(node) {
     listenerNode.on( 'LEFT_ARROW', () => {incrementActiveWidgetProperty(this,'x',-1)} );
     listenerNode.on( 'UP_ARROW', () => {incrementActiveWidgetProperty(this,'y')} );
     listenerNode.on( 'DOWN_ARROW', () => {incrementActiveWidgetProperty(this,'y',-1)} );
-        
+    listenerNode.on( 'KEY_1', () => {setActiveWidget(this,EDITOR_CONFIG.widgetPayload.skew)} );
+    listenerNode.on( 'KEY_2', () => {setActiveWidget(this,EDITOR_CONFIG.widgetPayload.scale)} );
+    listenerNode.on( 'KEY_3', () => {setActiveWidget(this,EDITOR_CONFIG.widgetPayload.rotation)} );
+    listenerNode.on( 'KEY_4', () => {setActiveWidget(this,EDITOR_CONFIG.widgetPayload.handle)} );
+    listenerNode.on( 'KEY_5', () => {setActiveWidget(this,EDITOR_CONFIG.widgetPayload.align)} );
+    listenerNode.on( 'KEY_6', () => {setActiveWidget(this,EDITOR_CONFIG.widgetPayload.pivot)} );
     });
     
-      
-    
-
     this.setActiveNode = function(node) {
         this.editableNode = node;
     }
 
-    function transformNode(transform) {
-        if(this.editableNode == null) { console.log('Cannot edit node... Node null'); return;}
-
-        this.editableNode.pin(transform);
-    }
-
-    function incrementNodeProperty(propertyName, amt) {
-        var transform = {
-
-        }
+    function setActiveWidget(self, widget) {
+        self.editorState.activeWidget = widget;
+        console.log(`Setting active widget to: \n ${widget.name}`)
     }
 
     function incrementActiveWidgetProperty(self, component = 'x', dir = 1) {
@@ -50,7 +45,6 @@ var GraphicsEditor = function(node) {
         transform[fieldName] = self.editableNode.pin(fieldName) + (dir * inc);
         self.editableNode.pin(transform);
 
-        console.log(`increment transform is: ${transform}`);
     }
 
     return this;

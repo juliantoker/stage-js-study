@@ -33,12 +33,40 @@ var WIDGETS = {
     align: {
         name: 'align',
         templateType: EditorWidgetTemplates.XY,
-        customIncrement: null,
+        customIncrement: -0.1,
         fieldNames: {
           x: 'alignX',
           y: 'alignY'
         }
     },
+    scale: {
+        name: 'scale',
+        templateType: EditorWidgetTemplates.XY,
+        customIncrement: null,
+        fieldNames: {
+          x: 'scaleX',
+          y: 'scaleY'
+        }
+    },
+    handle: {
+        name: 'handle',
+        templateType: EditorWidgetTemplates.XY,
+        customIncrement: -0.1,
+        fieldNames: {
+          x: 'handleX',
+          y: 'handleY'
+        }
+    },
+    pivot: {
+        name: 'pivot',
+        templateType: EditorWidgetTemplates.XY,
+        customIncrement: 0.01,
+        fieldNames: {
+          x: 'pivotX',
+          y: 'pivotY'
+        }
+    },
+    
     
 };
 

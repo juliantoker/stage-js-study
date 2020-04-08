@@ -39,7 +39,7 @@ var initializeGame = function(stage, display) {
   initializeStage(stage, display);
   loadImageAssets();
   createGrid(stage);
-  transformGrid(graphicsConfig.defaultGrid, grid);
+//   transformGrid(graphicsConfig.defaultGrid, grid);
 }
 
 var initializeStage = function(stage,display) {
