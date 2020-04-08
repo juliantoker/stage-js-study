@@ -15,9 +15,9 @@ var GraphicsEditor = function(node) {
 
     this.listenerNode = createListenerNode( {} , (listenerNode, EVENTS) => {
     listenerNode.on( 'RIGHT_ARROW', () => {incrementActiveWidgetProperty(this,'x')} );
-    // listenerNode.on( 'LEFT_ARROW', incrementActiveWidgetProperty('x',-1) );
-    // listenerNode.on( 'UP_ARROW', incrementActiveWidgetProperty('y') );
-    // listenerNode.on( 'DOWN_ARROW', incrementActiveWidgetProperty('y',-1) );
+    listenerNode.on( 'LEFT_ARROW', () => {incrementActiveWidgetProperty(this,'x',-1)} );
+    listenerNode.on( 'UP_ARROW', () => {incrementActiveWidgetProperty(this,'y')} );
+    listenerNode.on( 'DOWN_ARROW', () => {incrementActiveWidgetProperty(this,'y',-1)} );
         
     });
     

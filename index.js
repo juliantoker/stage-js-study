@@ -10,7 +10,6 @@ var activeStage;
 var activeDisplay;
 var grid;
 
-
 // Global helper variables
 var Math = Stage.Math, Mouse = Stage.Mouse;
 
@@ -110,7 +109,9 @@ var setDebugExports = () => {
 
 Stage(function(stage, display) {
   initializeGame(stage,display);
-  setDebugExports();    
+  var graphicsEditor = new GraphicsEditor(grid);
+
+//   setDebugExports();    
 });
 
 window.setDebugExports = setDebugExports;
