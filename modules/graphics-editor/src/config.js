@@ -33,7 +33,7 @@ var WIDGETS = {
     align: {
         name: 'align',
         templateType: EditorWidgetTemplates.XY,
-        customIncrement: -0.1,
+        customIncrement: 0.01,
         fieldNames: {
           x: 'alignX',
           y: 'alignY'
@@ -51,7 +51,7 @@ var WIDGETS = {
     handle: {
         name: 'handle',
         templateType: EditorWidgetTemplates.XY,
-        customIncrement: -0.1,
+        customIncrement: 0.01,
         fieldNames: {
           x: 'handleX',
           y: 'handleY'

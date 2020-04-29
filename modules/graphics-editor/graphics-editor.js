@@ -42,6 +42,7 @@ var GraphicsEditor = function(node) {
         let fieldName = widget.fieldNames[component];
 
         let inc = widget.customIncrement != null ? widget.customIncrement : EDITOR_CONFIG.defaultIncrement;
+        console.log(`widget ${fieldName}'s increment is: ${dir * inc}`);
         transform[fieldName] = self.editableNode.pin(fieldName) + (dir * inc);
         self.editableNode.pin(transform);
 
