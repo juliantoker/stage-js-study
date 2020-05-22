@@ -1,4 +1,6 @@
 import FontString from './modules/font-string/font-string.js';
+import {Subject,Observer} from './modules/observer/observer.js';
+
 window.FontString = FontString;
 // Stage element and display that carries the page's content
 var activeStage;
@@ -17,17 +19,17 @@ var initializeStage = function(stage,display) {
   activeStage = stage;
   activeDisplay = display;
   stage.viewbox(graphicsConfig.viewboxWidth, graphicsConfig.viewboxHeight);
-  makeFontString("WOAH!");
+  makeFontString('woah!');
 }
 
 var makeFontString = function(text) {
     var box = Stage.image('dark').box().stretch().pin('align',0.5).appendTo(activeStage);
-    console.log(box);
     var fontString = new FontString(text);
     fontString.sceneNode.appendTo(box).pin('align',0.5);
     fontString.sceneNode.on('click', (event) => {
         console.log('clicked fontstrign');
     });
+    window.box = box;
     window.fontString = fontString;
 }
 
