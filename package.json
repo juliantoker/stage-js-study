@@ -4,6 +4,7 @@
   "description": "2D website that is a living version of my mind in cyberspace... Deal with it B)",
   "main": "index.js",
   "dependencies": {
+    "httpserver": "^0.3.0",
     "planck-js": "^0.3.12",
     "require": "^2.4.20",
     "stage-js": "^0.8.11"

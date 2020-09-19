@@ -1,7 +1,7 @@
 import fontConfig from './src/font-string-config.js';
 
 var FontString = function(displayString) {
-    this.fc = Object.create(fontConfig);
+    this.fc = Object.create(fontConfig); //Why create an instanced version of the global config?
     this.displayString = displayString;
     this.sceneNode = Stage.image().pin({'align':0.5});
 

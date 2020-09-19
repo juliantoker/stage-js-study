@@ -1,8 +1,3 @@
-var Plant;
-import('./modules/plant/plant.js').then((module) => {
-  Plant = module.Plant;
-});
-
 import GraphicsEditor from './modules/graphics-editor/graphics-editor.js';
 
 // Stage element and display that carries the page's content
