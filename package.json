@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "httpserver": "^0.3.0",
-    "planck-js": "^0.3.12",
+    "planck-js": "^0.3.31",
     "require": "^2.4.20",
     "stage-js": "^0.8.11"
   },
